@@ -1,0 +1,351 @@
+/* ------------------------------------------------------
+   Global Styling
+------------------------------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --lz-red: #d10000;   /* Primary red */
+    --lz-black: #000;    /* Black */
+    --lz-white: #fff;    /* White */
+}
+
+/* ------------------------------------------------------
+   Utility Buttons
+------------------------------------------------------ */
+.btn-red {
+    background-color: var(--lz-red);
+    border: none;
+    color: var(--lz-white);
+    transition: background 0.3s ease;
+}
+
+.btn-red:hover {
+    background-color: #b30000;
+}
+
+/* ------------------------------------------------------
+   Navbar Styling
+------------------------------------------------------ */
+/* Make navbar fully transparent at the top */
+.navbar {
+    background-color: white;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .navbar-brand {
+    color: var(--lz-black) !important;  /* White brand text */
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Nav links: white by default (for the hero background) */
+.navbar .nav-link {
+    color: var(--lz-black) !important;
+    padding: 0.75rem 1.5rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover & active states: highlight with red background */
+.navbar .nav-link:hover {
+    color: var(--lz-red) !important;
+    border-radius: 4px;
+}
+
+/* Extra spacing between nav items */
+.navbar-nav .nav-item {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Scrolled Navbar: turn white with black text */
+.navbar-scrolled {
+    background-color: var(--lz-white) !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Links turn black upon scrolling */
+.navbar-scrolled .nav-link {
+    color: var(--lz-black) !important;
+}
+
+/* Active link on scroll remains white text on red background */
+.navbar-scrolled .nav-link.active {
+    color: var(--lz-black) !important;
+    border-radius: 4px;
+}
+
+/* Brand name becomes red in scrolled state */
+.navbar-scrolled .navbar-brand {
+    color: var(--lz-black) !important;
+}
+
+/* ------------------------------------------------------
+   Hero Section
+------------------------------------------------------ */
+.hero-section {
+    min-height: 80vh;
+    /* Your existing red-to-black gradient background */
+    background: linear-gradient(135deg, #d10000 20%, #000 100%);
+    color: var(--lz-white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Wave divider at the bottom of the hero */
+.hero-wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">\
+    <path fill="%23FFF" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,122.7C640,160,800,224,960,234.7C1120,245,1280,203,1360,181.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>\
+    </svg>'
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+/* Hero text sizing */
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+}
+
+/* Button in hero */
+.hero-section .btn-red {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+}
+
+/* ------------------------------------------------------
+   About Section
+------------------------------------------------------ */
+.about-section {
+    background: var(--lz-black);
+    position: relative;
+    color: var(--lz-white);
+    padding-top: 80px; /* Avoid overlap with fixed navbar */
+    padding-bottom: 80px;
+}
+
+.red-wave-divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">\
+    <path fill="%23D10000" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,133.3C640,181,800,267,960,266.7C1120,267,1280,213,1360,138.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>\
+    </svg>'
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+.bottom-wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">\
+    <path fill="%23d10000" fill-opacity="1" d="M0,64L80,80C160,96,320,128,480,170.7C640,213,800,267,960,266.7C1120,267,1280,213,1360,186.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>\
+    </svg>'
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+.about-section h2 {
+    color: var(--lz-white);
+}
+
+.about-section .list-unstyled li {
+    color: var(--lz-white);
+}
+
+.about-section .btn-outline-light {
+    border-color: var(--lz-white);
+    color: var(--lz-white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-section .btn-outline-light:hover {
+    background-color: var(--lz-red);
+    color: var(--lz-white);
+}
+
+/* ------------------------------------------------------
+   Testimonials Section
+------------------------------------------------------ */
+.testimonials-section {
+    background-color: #f9f9f9;
+}
+
+.testimonial-box {
+    background-color: var(--lz-white);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.testimonial-box p {
+    font-style: italic;
+}
+
+.testimonial-box span {
+    color: var(--lz-red);
+}
+
+/* ------------------------------------------------------
+   CTA Section
+------------------------------------------------------ */
+.cta-section {
+    min-height: 40vh;
+    background: linear-gradient(135deg, #000 30%, #d10000 100%);
+    position: relative;
+    text-align: center;
+    color: var(--lz-white);
+}
+
+.overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+}
+
+.cta-section p {
+    font-size: 1.25rem;
+}
+
+.cta-section .btn-red {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+}
+
+/* ------------------------------------------------------
+   Contact Section
+------------------------------------------------------ */
+.contact-section label {
+    color: #333;
+}
+
+.contact-section .btn-red {
+    background-color: var(--lz-red);
+    border: none;
+    color: var(--lz-white);
+}
+
+.contact-section .btn-red:hover {
+    background-color: #b30000;
+}
+
+/* ------------------------------------------------------
+   Catalog Page Wave Divider
+------------------------------------------------------ */
+.catalog-wave-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">\
+    <path fill="%23fff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,122.7C640,160,800,224,960,234.7C1120,245,1280,203,1360,181.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>\
+    </svg>'
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+/* Product Cards Hover Effect */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* ------------------------------------------------------
+   Footer
+------------------------------------------------------ */
+.footer-section {
+    background-color: var(--lz-black);
+}
+
+.footer-section p,
+.footer-section a {
+    color: #999;
+}
+
+.footer-section a:hover {
+    color: #fff;
+}
+
+/* ------------------------------------------------------
+   Responsive Adjustments
+------------------------------------------------------ */
+@media (max-width: 992px) {
+    .about-section .col-lg-7,
+    .about-section .col-lg-5 {
+        text-align: center;
+    }
+
+    .navbar-nav {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+
+    .cta-section p {
+        font-size: 1rem;
+    }
+}
