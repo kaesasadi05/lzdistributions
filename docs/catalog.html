@@ -119,37 +119,42 @@
   <!-- Custom JS to fetch and render products -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // IMPORTANT: Serve your site via a local/remote web server (not file://)
-      // Update the path below if needed (e.g., rename your CSV file to "lz-live.csv").
+      // IMPORTANT: Serve your site via a web/remote server (not file://)
+      // Update the CSV_URL if needed. For this example, the file is named 'lz.csv'
       const CSV_URL = 'lz.csv';
 
       Papa.parse(CSV_URL, {
         download: true,
-        header: false, // Use false because the CSV doesn't have proper headers
+        header: false, // Using false because the CSV doesn't include proper headers
         complete: function(results) {
           console.log("CSV Parse Results:", results);
           let rows = results.data;
           
-          // Optionally, skip the first row if it appears to be a header row (e.g., if first cell is empty)
+          // Optionally, skip the first row if it appears to be a header row (if first cell is empty)
           if (rows.length && rows[0][0] === "") {
             console.log("Skipping header row.");
             rows = rows.slice(1);
           }
           
-          // Log a sample row for debugging
           console.log("Sample row:", rows[0]);
           
-          // Map rows to product objects
-          // Assuming the CSV columns:
+          // Map rows to product objects.
+          // Assumed mapping:
           // Column 0: Product Name
+          // Column 1: ASIN
           // Column 2: Price
           // Column 3: Amazon Link
-          // Column 5: Quantity
+          // Column 4: ROI
+          // Column 5: MOQ
+          // Column 6: Quantity
           const products = rows.filter(row => row[0] && row[3]).map(row => ({
             name: row[0].trim(),
+            asin: row[1] ? row[1].trim() : "",
             price: parseFloat(row[2].replace(/[^0-9.]/g, "")) || 0,
             amazonLink: row[3].trim(),
-            quantity: parseInt(row[5].replace(/[^0-9]/g, ""), 10) || 0,
+            roi: row[4] ? row[4].trim() : "",
+            moq: row[5] ? row[5].trim() : "",
+            quantity: row[6] ? parseInt(row[6].replace(/[^0-9]/g, ""), 10) || 0 : 0,
           }));
 
           console.log("Filtered products:", products);
@@ -184,7 +189,10 @@
                 <i class="bi bi-box-seam display-1 text-dark mb-3"></i>
                 <h5 class="card-title fw-bold fs-4 text-dark">${product.name}</h5>
                 <p class="card-text">
+                  ASIN: ${product.asin}<br>
                   Price: $${product.price.toFixed(2)}<br>
+                  ROI: ${product.roi}<br>
+                  MOQ: ${product.moq}<br>
                   Quantity: ${product.quantity}
                 </p>
               </div>
